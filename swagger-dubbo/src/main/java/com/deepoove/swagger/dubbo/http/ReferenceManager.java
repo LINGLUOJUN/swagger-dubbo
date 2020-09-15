@@ -8,14 +8,16 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.apache.dubbo.config.ApplicationConfig;
+import org.apache.dubbo.config.ReferenceConfig;
+import org.apache.dubbo.config.spring.ServiceBean;
+import org.apache.dubbo.config.spring.extension.SpringExtensionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 
-import com.alibaba.dubbo.config.ApplicationConfig;
-import com.alibaba.dubbo.config.ReferenceConfig;
-import com.alibaba.dubbo.config.spring.ServiceBean;
-import com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory;
+
+
 
 public class ReferenceManager {
     
@@ -38,7 +40,7 @@ public class ReferenceManager {
         instance = new ReferenceManager();
         services = new HashSet<ServiceBean>();
         try {
-            Field field = SpringExtensionFactory.class.getDeclaredField("contexts");
+            Field field = SpringExtensionFactory.class.getDeclaredField("CONTEXTS");
             field.setAccessible(true);
             Set<ApplicationContext> contexts = (Set<ApplicationContext>)field.get(new SpringExtensionFactory());
             for (ApplicationContext context : contexts){
@@ -69,7 +71,7 @@ public class ReferenceManager {
 
         for (ServiceBean<?> service : services) {
             if (interfaceClass.equals(service.getInterfaceClass().getName())) {
-                ReferenceConfig<Object> reference = new ReferenceConfig<Object>();
+                ReferenceConfig<Object> reference = new ReferenceConfig<>();
                 reference.setApplication(service.getApplication());
                 reference.setRegistry(service.getRegistry());
                 reference.setRegistries(service.getRegistries());

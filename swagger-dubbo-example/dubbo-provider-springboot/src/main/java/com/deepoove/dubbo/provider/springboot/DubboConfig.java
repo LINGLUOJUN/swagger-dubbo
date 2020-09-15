@@ -1,18 +1,16 @@
 package com.deepoove.dubbo.provider.springboot;
 
+import org.apache.dubbo.config.ApplicationConfig;
+import org.apache.dubbo.config.ProtocolConfig;
+import org.apache.dubbo.config.RegistryConfig;
+import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.alibaba.dubbo.config.ApplicationConfig;
-import com.alibaba.dubbo.config.ProtocolConfig;
-import com.alibaba.dubbo.config.RegistryConfig;
-import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
 import com.deepoove.swagger.dubbo.annotations.EnableDubboSwagger;
 
 @Configuration
-//@ImportResource({ "classpath:dubbo/*.xml" })
-//@PropertySource("classpath:swagger-dubbo.properties")
-@DubboComponentScan(basePackages = { "com.deepoove.dubbo.provider.springboot" })
+@DubboComponentScan(basePackages = {"com.deepoove.dubbo.provider.springboot"})
 @EnableDubboSwagger
 public class DubboConfig {
 

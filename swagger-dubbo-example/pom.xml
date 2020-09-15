@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.deepoove</groupId>
 		<artifactId>swagger-dubbo-project</artifactId>
-		<version>2.0.1</version>
+		<version>2.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>swagger-dubbo-example</artifactId>
 	<packaging>pom</packaging>
@@ -31,5 +31,6 @@
 	<modules>
 		<module>dubbo-api</module>
 		<module>dubbo-provider</module>
+		<module>dubbo-provider-springboot</module>
 	</modules>
 </project>
